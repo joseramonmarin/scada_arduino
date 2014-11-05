@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.IndexError'> string index out of range"
+p3
+sS'layer'
+p4
+S'/home/jose/Escritorio/web2py/applications/welcome2/controllers/default.py'
+p5
+sS'code'
+p6
+S'\nimport serial\nimport time\npuerto_Serie=serial.Serial(\'/dev/ttyACM0\', 115200,timeout=2)\npuerto_Serie.close()\npuerto_Serie.open()\n\ndef index():\n    \n    response.flash = T("Welcome to web2py!")\n    return dict(message=T(\'Hello World\'))\n    \nimport pdb\n  \ndef recibe_datos():\n\tcadena=""\n\trecibe=[]\n\tvalor=str(request.vars.valor)\n\t\n\t#pdb.set_trace()\n\n\tif (valor==\'1\'):\n\t\t\n\t\tcadena=\'a\'\n\tif (valor==\'0\'):\n\t\t\n\t\tcadena=\'b\'\n\t\n\t\n\tpuerto_Serie.write(cadena)\n\tif puerto_Serie.inWaiting() > 0:\n\t\trecibe = puerto_Serie.readline()\n\t\trecibe_puerta=recibe[8]\n\t\t\n\t\tresultado = {"Puerta":recibe_puerta}\n\t\n\treturn recibe_puerta\n\ttime.sleep(0.1) \n\t\n\t\ndef user():\n    \n    return dict(form=auth())\n@cache.action()\ndef download():\n    \n    return response.download(request, db)\ndef call():\n    \n    return service()\n@auth.requires_login() \ndef api():\n    \n    from gluon.contrib.hypermedia import Collection\n    rules = {\n        \'<tablename>\': {\'GET\':{},\'POST\':{},\'PUT\':{},\'DELETE\':{}},\n        }\n    return Collection(db).process(request,response,rules)\n\nresponse._vars=response._caller(recibe_datos)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/jose/Escritorio/web2py/gluon/restricted.py", line 224, in restricted\n    exec ccode in environment\n  File "/home/jose/Escritorio/web2py/applications/welcome2/controllers/default.py", line 60, in <module>\n  File "/home/jose/Escritorio/web2py/gluon/globals.py", line 392, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/jose/Escritorio/web2py/applications/welcome2/controllers/default.py", line 33, in recibe_datos\n    recibe_puerta=recibe[8]\nIndexError: string index out of range\n'
+p11
+s.
